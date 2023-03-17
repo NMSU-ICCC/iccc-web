@@ -31,7 +31,7 @@ export class Menu extends Component{
               </nav>
             </div>
             {/* small Menu */}
-            <div class="block fixed top-0 w-screen flex justify-center sm:hidden ">
+            <div class="block fixed top-0 w-screen justify-center sm:hidden ">
               <nav className="bg-nmsu-crimson h-14 flex justify-between items-center shadow-lg w-full px-4">
                   <Link to="/"class="h-full">
                       <img src={logotype} className="h-full" alt="ICCC_logo" />

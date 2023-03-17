@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export class Description extends Component{
     render() {
       return (   
-        <div class="bg-white flex justify-center w-screen min-h-screen max-h-full bg-[url('Resources/Images/NMSU_1.jpg')] bg-no-repeat bg-cover p-10 pt-20  flex items-center justify-center sm:p-10" >
+        <div class="bg-white w-screen min-h-screen max-h-full bg-[url('Resources/Images/NMSU_1.jpg')] bg-no-repeat bg-cover p-10 pt-20  flex items-center justify-center sm:p-10" >
             <div class="bg-black p-10 text-left opacity-60 text-2xl text-white w-full h-fit">
                 The International Collaborative Coding Club at New Mexico State University has the goal of helping 
                 its members to develop the confidence and skills to succeed in their careers as Computer Scientists. 

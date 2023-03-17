@@ -12,10 +12,8 @@ export class Documents extends Component{
             <Menu/>
             <div class="hidden sm:flex sm:content-center sm:flex-col items-center sm:justify-center sm:h-screen sm:w-screen sm:p-20">
                 <div class="text-2xl pb-4 font-bold">Constituion</div>    
-                the following file can be downloaded or viewed            
-                <iframe class="w-10/12 h-full" src="../../Constitution.pdf#view=FitW"></iframe>
+                Our official current bylaws can be visualized below:  
                 <iframe class="w-10/12 h-full" src="./Constitution.pdf#view=FitW"></iframe>
-                <iframe class="w-10/12 h-full" src="Constitution.pdf#view=FitW"></iframe>
             </div> 
         </div>   
       );

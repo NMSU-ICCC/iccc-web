@@ -21,9 +21,9 @@ export class MenuLarge extends Component{
 
       return (   
         
-        <div class="bg-nmsu-white flex justify-center items-center  w-screen h-auto flex-col p-20 ">
+        <div class="bg-nmsu-white justify-center items-center  w-screen h-auto flex-col p-20 ">
             {/* Big Menu */}
-            <div class="hidden sm:w-screen sm:flex sm:justify-center sm:fixed sm:top-0   ">                
+            <div class="hidden sm:w-screen sm:justify-center sm:fixed sm:top-0   ">                
               <nav className="bg-nmsu-crimson  px-8 h-14 flex justify-between items-center shadow-lg rounded-full my-3 w-11/12">
                   <Link to="/"  class="h-full">
                       <img src={logotype} className="h-full" alt="ICCC_logotype" />
@@ -32,7 +32,7 @@ export class MenuLarge extends Component{
               </nav>
             </div>
             {/* small Menu */}
-            <div class="block fixed top-0 w-screen flex justify-center sm:hidden ">
+            <div class="block fixed top-0 w-screen justify-center sm:hidden ">
               <nav className="bg-nmsu-crimson h-14 flex justify-between items-center shadow-lg w-full px-4">
                   <a  class="h-full">
                       <img src={logotype} className="h-full" alt="ICCC_logo" />
