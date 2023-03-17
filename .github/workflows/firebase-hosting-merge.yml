@@ -17,4 +17,4 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ICCC_NMSU }}'
           channelId: live
-          projectId: iccc-nmsu
+          projectId: nmsu-iccc
