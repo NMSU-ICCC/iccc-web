@@ -16,6 +16,7 @@ export class Documents extends Component{
                 
                 <iframe class="w-10/12 h-full" src="../../Constitution.pdf#view=FitW"></iframe>
                 <iframe class="w-10/12 h-full" src="./Constitution.pdf#view=FitW"></iframe>
+                <iframe class="w-10/12 h-full" src="Constitution.pdf#view=FitW"></iframe>
             </div> 
         </div>   
       );
