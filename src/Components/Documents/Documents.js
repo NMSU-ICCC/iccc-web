@@ -11,7 +11,8 @@ export class Documents extends Component{
             <Repository/>
             <Menu/>
             <div class="hidden sm:flex sm:content-center sm:flex-col items-center sm:justify-center sm:h-screen sm:w-screen sm:p-20">
-                <div class="text-2xl pb-4 font-bold">Constituion</div>                
+                <div class="text-2xl pb-4 font-bold">Constituion</div>    
+                the following file can be downloaded            
                 <iframe class="w-10/12 h-full" src="../../Constitution.pdf#view=FitW"></iframe>
                 <iframe class="w-10/12 h-full" src="./Constitution.pdf#view=FitW"></iframe>
                 <iframe class="w-10/12 h-full" src="Constitution.pdf#view=FitW"></iframe>
