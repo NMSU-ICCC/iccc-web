@@ -31,11 +31,11 @@ export class Officers extends Component{
             profiles.push(<Officer name={officers[i][0]} position={officers[i][1]} description={officers[i][2]} image={officers[i][3]} email={officers[i][4]} key={i}/>)
           }
         return(  
-            <div class="w-screen h-screen bg-violet-800 flex justify-center items-center flex-col px-20 py-40">
+            <div class="w-screen h-min-screen h-fit bg-violet-800 flex justify-center items-center flex-col px-20 py-40">
                 <p class="text-7xl pb-10 text-white">
                     Officers positions
                 </p>
-                <div class="grid grid-cols-2 gap-10  h-fit w-fit">          
+                <div class="flex flex-col sm:grid sm:grid-cols-2 sm:gap-10  sm:h-fit sm:w-fit">          
                     {profiles}
                 </div>
             </div>

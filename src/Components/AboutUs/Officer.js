@@ -3,12 +3,12 @@ import React, {Component} from 'react';
 export class Officer extends Component{
     render(){
         return(  
-                <div class=" flex flex-row fit bg-white shadow-xl h-fit p-5 rounded-lg">
-                    <div class="w-1/3 h-full p-5 flex justify-center items-center" >
+                <div class="bg-white rounded-lg p-5 flex-col my-10 sm:flex sm:flex-row sm:my-0 sm:h-fit  sm:shadow-xl ">
+                    <div class="hidden sm:w-1/3 sm:h-full sm:p-5 sm:flex sm:justify-center items-center" >
                         <img class="h-20 rounded-full" src={this.props.image}/>
                     </div>
 
-                    <div class="w-2/3 flex flex-col justify-center items-center">
+                    <div class="w-full sm:w-2/3 sm:flex-col sm:justify-center sm:items-center">
                         <div class="w-full h-fit text-xl">
                             {this.props.name}
                         </div>
