@@ -2,6 +2,7 @@ import React, {Component }  from 'react';
 import { Link } from "react-router-dom";
 import {Menu} from '../Menu/Menu'
 import {Repository} from './Repository'
+import {Slack} from './Slack'
 
 
 export class Documents extends Component{
@@ -9,6 +10,7 @@ export class Documents extends Component{
       return (   
         <div class="bg-nmsu-white flex justify-center items-center  w-screen h-auto flex-col p-20 ">
             <Repository/>
+            <Slack/>
             <Menu/>
             <div class="hidden sm:flex sm:content-center sm:flex-col items-center sm:justify-center sm:h-screen sm:w-screen sm:p-20">
                 <div class="text-2xl pb-4 font-bold">Constituion</div>    
