@@ -8,7 +8,7 @@ export class Welcome extends Component{
             <div class="bg-white p-10 text-left justify-center items-center flex-col opacity-80 text-2xl text-black w-full h-fit">
                 <p class="text-4xl sm:text-7xl sm:font-bold " > Welcome </p>
                 <p >
-                  To the International Collaborative Coding Club at NMSU...
+                  To the International Collaborative Coding Club at NMSU.
                 </p>
             </div>
         </div>   
