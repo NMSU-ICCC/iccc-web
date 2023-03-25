@@ -4,27 +4,7 @@ import {Officer} from "./Officer";
 
 export class WhoAreWe extends Component{
     render(){
-        return(  
- 
-            
-            // <div class="m-20 w-full h-screen p-20 items-center justify-center">
-            //     <div class="bg-white h-fit shadow-lg rounded-lg w-full h-full flex-row flex justify-center items-center">
-            //         <div class="w-2/4 h-full bg-[url('Resources/Images/NMSU_3.jpg')] bg-cover rounded-l-lg">
-            //         </div>
-            //         <div class="w-2/4 p-20">
-            //             <h1 class="text-5xl pb-10">Become an Officer</h1>
-            //             <p class="text-left">
-            //                 We are actively looking for people to fill new positions and help us improve the club.
-            //                 If you are interesting, send an email to any of the officers expressing your interest.
-            //                 As an officer, you will be able to take part in the creation, planning direction and development
-            //                 of our projects an activities. You can help other members improve their skill at the same time
-            //                 that you improve yours as well as adding a cool achivement for your resume!
-            //                 Moreover, you can have a more active rol deciding what projects to develope.
-            //             </p>
-            //         </div>
-            //     </div>
-            
-            // </div>
+        return( 
             <div class="container my-24 px-6 mx-auto">
                 <section class="mb-32 text-gray-800">
                     <div class="block rounded-lg shadow-lg bg-white">

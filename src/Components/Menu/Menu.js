@@ -8,7 +8,7 @@ import MenuSmall from './MenuSmall';
 
 const menuOptions = [
   ['About us', "/AboutUs"],
-  ['Documents', "/Documents"],
+  ['Resources', "/Resources"],
   ['My Documents', "/LogIn"],
 ]
 
