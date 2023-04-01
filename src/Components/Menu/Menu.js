@@ -9,7 +9,7 @@ import MenuSmall from './MenuSmall';
 const menuOptions = [
   ['About us', "/AboutUs"],
   ['Resources', "/Resources"],
-  ['My Documents', "/LogIn"],
+  ['My Documents', "/MyFiles"],
 ]
 
 export class Menu extends Component{
