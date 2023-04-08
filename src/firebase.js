@@ -1,6 +1,9 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc} from "firebase/firestore";
+//import {ref, uploadBytes} from "firebase/storage";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
+import bcrypt from 'bcryptjs'
 
 const firebaseConfig = {
     apiKey: "AIzaSyADxwQOs4o9lXXU7pzk2_iwKPc3xPt7Ywc",
@@ -12,23 +15,31 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-const ref =firebase.firestore()
-
-
-
-
-
+const db =firebase.firestore()
 
 export const getUsers = () => {
     const users = [];
     return new Promise((resolve, reject) => {           
-        ref.collection("users").onSnapshot((querySnapshot) => {            
+        db.collection("users").onSnapshot((querySnapshot) => {            
             querySnapshot.forEach((doc) => {
                 users.push(doc.data());
             })
             setTimeout(function() {
                 resolve(users)
             }, 400);
+        })
+    })
+}
+export const getResources = () => {
+    const resources = [];
+    return new Promise((resolve, reject) => {           
+        db.collection("resources").onSnapshot((querySnapshot) => {            
+            querySnapshot.forEach((doc) => {
+                resources.push(doc.data());
+            })
+            setTimeout(function() {
+                resolve(resources)
+            }, 700);
         })
     })
 }
@@ -53,19 +64,58 @@ export const userExists = (userName, email) => {
         })
     })
 }
+export const resourceExists = (filename) => {
+    return new Promise((resolve, reject) => {  
+        getResources()
+        .then(resources =>{
+            for (let index = 0; index < resources.length; index++) {
+                if(resources[index].filename.localeCompare(filename) == 0){
+                    return resolve( true );
+                }
+            }
+            return resolve( false );
+        })
+    })
+}
 
-export const addUser = (name, email, userName, password,) =>{    
+
+function hashPassword(password){      
+    return new Promise((resolve, reject) => { 
+        bcrypt.genSalt().then(salt => {
+            bcrypt.hash(password, salt).then(hash =>{
+                return resolve(hash);
+            })
+        })
+    })  
+}
+
+function definePosition(code){
+    if(code.localeCompare("ICCC+Manager") == 0){
+        return "manager";
+    }
+    else{
+        return "user"
+    }
+}
+
+export const addUser = (name, email, userName, password, code) =>{ 
+    let position = definePosition(code);
+    let hashedPassword = ""
+    hashPassword(password).then(ans => {hashedPassword = ans});
+
     return new Promise((resolve, reject) => { 
         userExists(userName, email)
         .then(answer =>{
+            console.log("hashed password" + hashedPassword, answer, position);
             if (answer){
                 return resolve(false);
             }
-            setDoc(doc(ref, "users", userName), {
+            setDoc(doc(db, "users", userName), {
                 name: name,
                 email: email,
                 userName: userName,
-                password: password
+                password: hashedPassword,
+                position: position
             });
             return resolve(true);
         })
@@ -80,16 +130,71 @@ export const login = (nameEmail, password) => {
                 return resolve(false);
             }
             for (let index = 0; index < users.length; index++) {
-                if(users[index].userName.localeCompare(nameEmail) == 0  ||  users[index].email.localeCompare(nameEmail) == 0){
-                    if(users[index].password.localeCompare(password) == 0){
-                        return resolve( true );
-                    }
+                if(users[index].userName.localeCompare(nameEmail) == 0  ||  users[index].email.localeCompare(nameEmail) == 0){                    
+                    bcrypt.compare(password, users[index].password).then(result => {
+                        //if valid password
+                        if(result){
+                            //user or manager
+                            return resolve(users[index].position);
+                        }
+                        //invalid password
+                        return resolve( false );
+                    });
                 }
             }
-            return resolve( false );
         })
     })
 }
+
+
+export const uploadFile = (filename, file, type) =>{
+    return new Promise((resolve, reject) => {         
+        resourceExists(filename)
+        .then(answer =>{
+            if (answer){
+                return resolve(false);
+            }
+
+
+
+
+
+
+
+
+
+
+
+                //TODO: to implement========================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // const storage = getStorage();
+            // const storageRef = ref(storage, filename);
+
+            // // 'file' comes from the Blob or File API
+            // uploadBytes(storageRef, file).then((snapshot) => {
+            //     console.log('Uploaded a blob or file!');
+            // });
+        //     const fileRef = ref(db, "files", filename)
+        //     uploadBytes(fileRef, file).then(ans => {
+        //         return resolve(true);
+        //     })
+        })
+    })
+}
+
 
 
 export default firebase;

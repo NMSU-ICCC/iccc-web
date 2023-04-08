@@ -5,7 +5,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'raleway': ['Raleway', 'sans-serif'],
+      },
       colors: {
+        "iccc-purple": "#6b62fd",
+        "iccc-red": "#8c0b42",
         "nmsu-crimson": "#8c0b42",
         "nmsu-gold":"#cfc7bd",
         "nmsu-blue":"#A7BABE",

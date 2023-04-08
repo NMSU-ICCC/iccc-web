@@ -1,8 +1,6 @@
-import React, {Component, useEffect, useState} from 'react';
-import { Link } from "react-router-dom";
-import firebase, {addUser} from "../../firebase";
-import {Menu} from '../Menu/Menu'
-import { GeneralButton } from '../GeneralButton';
+import React, {useState} from 'react';
+import {addUser} from "../../firebase";
+import Menu from '../Menu/Menu'
 import { useNavigate  } from "react-router-dom";
 
 export default function SignIn(props){
@@ -27,7 +25,7 @@ export default function SignIn(props){
         return (p.length >= 5 ) && (pp.localeCompare(p) == 0)
     }
     function validateCode(c) {
-        return c.localeCompare("ICCC+") == 0
+        return c.localeCompare("ICCC+") == 0 || c.localeCompare("ICCC+Manager");
     }
 
     const createAccount = async (e) => {
@@ -52,9 +50,9 @@ export default function SignIn(props){
             setError("The invitation code in invalid");
             return
         }
-        addUser(name, email, userName, password).then(a => {
+        addUser(name, email, userName, password, code).then(a => {
             if(a){
-                navigate("/MyFiles")
+                navigate("/LogIn")
             }
             else{
                 setError("User already exists or invalid information")

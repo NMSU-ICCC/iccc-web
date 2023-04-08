@@ -1,16 +1,15 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect} from 'react';
 import { Link } from "react-router-dom";
 import logotype from '../../Resources/Images/logotype/ICCC_logotype_solid.png'; 
 import menuIcon from '../../Resources/Images/Icons/menu_white.png'; 
 import {Button} from '../Button'
 
 
-export class MenuLarge extends Component{
+export default function MenuLarge(props){
   
-    render() {
       const buttons = [] 
-      for (let i = 0; i< this.props.options.length; i++){
-          buttons.push(<Button message={this.props.options[i][0]} route={this.props.options[i][1]} key={i}/>)
+      for (let i = 0; i< props.options.length; i++){
+          buttons.push(<Button message={props.options[i][0]} route={props.options[i][1]} key={i}/>)
       }
 
       return (   
@@ -23,5 +22,4 @@ export class MenuLarge extends Component{
           </nav>
         </div>
       );
-    }
-  }
+}

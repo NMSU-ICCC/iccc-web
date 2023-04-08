@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('//fonts.googleapis.com/css?family=Raleway');
 
 body {
   margin: 0;

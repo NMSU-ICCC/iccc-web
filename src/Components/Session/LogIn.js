@@ -1,9 +1,9 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import { Link } from "react-router-dom";
-import {Menu} from '../Menu/Menu'
-import { GeneralButton } from '../GeneralButton';
-import firebase, {login} from "../../firebase";
+import Menu from '../Menu/Menu'
+import {login} from "../../firebase";
 import { useNavigate  } from "react-router-dom";
+
 
 export default function LogIn(){
     const [nameEmail, setNameEmail] = useState('');
@@ -13,12 +13,19 @@ export default function LogIn(){
     const LogInF = (e) => {
         setError("");
         login(nameEmail, password).then(a => {
-            console.log(a)
-            if(a){
+            if(a === false){
+                sessionStorage.setItem("sessionStarted", false);
+                setError("Incorrect user or password");
+            }
+            if(a.localeCompare("manager") == 0){
+                sessionStorage.setItem("sessionStarted", true);
+                sessionStorage.setItem("position", "manager");
                 navigate("/")
             }
-            else{
-                setError("Incorrect user or password");
+            if(a.localeCompare("user") == 0){
+                sessionStorage.setItem("sessionStarted", true);
+                sessionStorage.setItem("position", "user");
+                navigate("/")
             }
         })
     }
