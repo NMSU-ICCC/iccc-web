@@ -4,11 +4,13 @@ import ButtonSolid from '../ButtonSolid';
 
 export default function UploadFile(){
     const [file, setfile] = useState(null)
-    const [title, setTitle] = useState("give it a title")
+    const [title, setTitle] = useState("")
 
     function uploadFileToDataBase(){
-        if(file.localeCompare("give it a title") == 0 || file.localeCompare("" == 0)){
-            console.log("error");
+        if(file == null){
+            return
+        }
+        if(title.localeCompare("" ) == 0){
             return
         }
         uploadFile(title, file, "file")
@@ -29,8 +31,10 @@ export default function UploadFile(){
                             Load (.png, .jpg, .svg, .pdf)
                         </label>
                         
-                        <input type="text"  class="border-iccc-red border-2 text-iccc-red rounded-lg px-5 my-5" value={title}
-                            onChange={e=> { setTitle(e.target.value)}}>
+                        <input type="text"  class="border-iccc-red border-2 text-iccc-red rounded-lg px-5 my-5" value={title} placeholder="Give it a name"
+                            onChange={e=> {                                   
+                                setTitle(e.target.value)
+                            }}>
                         </input>
 
                         {/*This button admits the file, but it is not easy to style it. For that reason, we hide it.
