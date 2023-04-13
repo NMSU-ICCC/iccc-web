@@ -154,39 +154,16 @@ export const uploadFile = (filename, file, type) =>{
             if (answer){
                 return resolve(false);
             }
-
-
-
-
-
-
-
-
-
-
-
                 //TODO: to implement========================================================
 
 
+            const storage = getStorage();
+            const imageRef = ref(storage, "images/"+filename);
 
-
-
-
-
-
-
-
-
-
-
-
-            // const storage = getStorage();
-            // const storageRef = ref(storage, filename);
-
-            // // 'file' comes from the Blob or File API
-            // uploadBytes(storageRef, file).then((snapshot) => {
-            //     console.log('Uploaded a blob or file!');
-            // });
+            // 'file' comes from the Blob or File API
+            uploadBytes(imageRef, file).then((snapshot) => {
+                console.log('Uploaded a blob or file!', snapshot);
+            });
         //     const fileRef = ref(db, "files", filename)
         //     uploadBytes(fileRef, file).then(ans => {
         //         return resolve(true);
@@ -198,3 +175,18 @@ export const uploadFile = (filename, file, type) =>{
 
 
 export default firebase;
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+

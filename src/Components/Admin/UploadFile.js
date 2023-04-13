@@ -29,7 +29,7 @@ export default function UploadFile(){
                             Load (.png, .jpg, .svg, .pdf)
                         </label>
                         
-                        <input type="text"  class="border-iccc-red border-2 text-iccc-red rounded-lg px-5 my-5" 
+                        <input type="text"  class="border-iccc-red border-2 text-iccc-red rounded-lg px-5 my-5"
                             onChange={e=> {console.log(e); setTitle(e.target.value)}}>
                         </input>
 

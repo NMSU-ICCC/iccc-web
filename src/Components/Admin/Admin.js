@@ -1,6 +1,4 @@
-import React, {Component, useEffect, useState} from 'react';
-import { Link } from "react-router-dom";
-import firebase from "../../firebase";
+import React, {} from 'react';
 import UploadFile from './UploadFile';
 import AdminIntro from './AdminIntro';
 

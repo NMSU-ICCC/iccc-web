@@ -25,7 +25,8 @@ export default function SignIn(props){
         return (p.length >= 5 ) && (pp.localeCompare(p) == 0)
     }
     function validateCode(c) {
-        return c.localeCompare("ICCC+") == 0 || c.localeCompare("ICCC+Manager");
+        console.log(c)
+        return c.localeCompare("ICCC+") == 0 || c.localeCompare("ICCC+Manager")==0;
     }
 
     const createAccount = async (e) => {
