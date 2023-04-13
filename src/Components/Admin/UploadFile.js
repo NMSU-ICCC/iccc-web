@@ -27,7 +27,7 @@ export default function UploadFile(){
                     <div class="pt-10 flex flex-col justify-center items-center">
 
                         {/* This label replaces the button styles */}
-                        <label htmlFor="filePicker" class=" w-fit h-fit p-4 rounded-md font-extrabold text-iccc-red whitespace-no-wrap hover:underline hover:cursor-pointer">
+                        <label htmlFor="filePicker" class=" w-fit h-fit p-5 rounded-md font-extrabold text-iccc-red whitespace-no-wrap hover:underline hover:cursor-pointer">
                             Load (.png, .jpg, .svg, .pdf)
                         </label>
                         
