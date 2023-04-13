@@ -10,7 +10,7 @@ export default function UploadFile(){
         if(file == null){
             return
         }
-        if(title.localeCompare("" ) == 0){
+        if(title.localeCompare("") == 0){
             return
         }
         uploadFile(title, file, "file")
