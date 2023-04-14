@@ -2,8 +2,9 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import { doc, setDoc} from "firebase/firestore";
 //import {ref, uploadBytes} from "firebase/storage";
-import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { getStorage, ref, uploadBytes, listAll, getDownloadURL, getMetadata } from "firebase/storage";
 import bcrypt from 'bcryptjs'
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyADxwQOs4o9lXXU7pzk2_iwKPc3xPt7Ywc",
@@ -106,7 +107,6 @@ export const addUser = (name, email, userName, password, code) =>{
     return new Promise((resolve, reject) => { 
         userExists(userName, email)
         .then(answer =>{
-            console.log("hashed password" + hashedPassword, answer, position);
             if (answer){
                 return resolve(false);
             }
@@ -154,20 +154,46 @@ export const uploadFile = (filename, file, type) =>{
             if (answer){
                 return resolve(false);
             }
-                //TODO: to implement========================================================
-
-
             const storage = getStorage();
-            const imageRef = ref(storage, "images/"+filename);
+            const imageRef = ref(storage, filename);
+            const metadata = {
+                title: 'filename',
+                type: "type"
+              };
+              
 
-            // 'file' comes from the Blob or File API
-            uploadBytes(imageRef, file).then((snapshot) => {
-                console.log('Uploaded a blob or file!', snapshot);
+            uploadBytes(imageRef, file, metadata).then((snapshot) => {
+                console.log('resources updated ', snapshot );
             });
-        //     const fileRef = ref(db, "files", filename)
-        //     uploadBytes(fileRef, file).then(ans => {
-        //         return resolve(true);
-        //     })
+        })
+    })
+}
+
+
+export const getAllResources = () =>{
+    const storage = getStorage();
+    const resourcesListRef = ref(storage, "")
+    return new Promise((resolve, reject) => {         
+        listAll(resourcesListRef).then((response) => {
+            let imageList = []
+            for (let index = 0; index < response.items.length; index++) {
+                console.log(response.items[index])
+                getDownloadURL(response.items[index]).then(url=>{
+                    let dict = {
+                        url: url
+                    }
+                    return dict
+                }).then((ans) => {
+                    getMetadata(response.items[index]).then((metadata) => {
+                        ans["name"] = metadata["name"];
+                        ans["type"] = metadata["type"];
+                        imageList.push(ans);
+                    })
+                    .then(()=>{
+                        return resolve(imageList);
+                    })
+                })
+            }
         })
     })
 }
