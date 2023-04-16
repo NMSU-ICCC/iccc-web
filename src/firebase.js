@@ -31,6 +31,21 @@ export const getUsers = () => {
         })
     })
 }
+
+export const getResourcesLinks = () => {
+    const links = [];
+    return new Promise((resolve, reject) => {           
+        db.collection("resourcesLinks").onSnapshot((querySnapshot) => {            
+            querySnapshot.forEach((doc) => {
+                links.push(doc.data());
+            })
+            setTimeout(function() {
+                resolve(links)
+            }, 400);
+        })
+    })
+}
+
 export const getResources = () => {
     const resources = [];
     return new Promise((resolve, reject) => {           
@@ -39,7 +54,7 @@ export const getResources = () => {
                 resources.push(doc.data());
             })
             setTimeout(function() {
-                resolve(resources)
+                return resolve(resources)
             }, 700);
         })
     })
@@ -147,7 +162,7 @@ export const login = (nameEmail, password) => {
 }
 
 
-export const uploadFile = (filename, file, type) =>{
+export const uploadResourceFile = (filename, file, type) =>{
     return new Promise((resolve, reject) => {         
         resourceExists(filename)
         .then(answer =>{
@@ -158,14 +173,23 @@ export const uploadFile = (filename, file, type) =>{
             const imageRef = ref(storage, filename);
             const metadata = {
                 title: 'filename',
-                type: "type"
-              };
-              
+                type: type
+              };              
 
             uploadBytes(imageRef, file, metadata).then((snapshot) => {
-                console.log('resources updated ', snapshot );
+                return resolve(true)
             });
         })
+    })
+}
+
+export const uploadResourceLink = (link, title) =>{ 
+    return new Promise((resolve, reject) => { 
+        setDoc(doc(db, "resourcesLinks", title), {
+            name: title,
+            link, link
+        });
+        return resolve(true);
     })
 }
 
@@ -177,7 +201,6 @@ export const getAllResources = () =>{
         listAll(resourcesListRef).then((response) => {
             let imageList = []
             for (let index = 0; index < response.items.length; index++) {
-                console.log(response.items[index])
                 getDownloadURL(response.items[index]).then(url=>{
                     let dict = {
                         url: url
@@ -186,7 +209,7 @@ export const getAllResources = () =>{
                 }).then((ans) => {
                     getMetadata(response.items[index]).then((metadata) => {
                         ans["name"] = metadata["name"];
-                        ans["type"] = metadata["type"];
+                        ans["type"] = metadata["contentType"];
                         imageList.push(ans);
                     })
                     .then(()=>{
