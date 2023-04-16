@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Officers} from "./Officers";
+import Officers from "./Officers";
 import {WhoAreWe} from "./WhoAreWe";
 import {Description} from './Description'
 
