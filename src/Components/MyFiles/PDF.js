@@ -22,8 +22,8 @@ export default function PDF(props){
 
     return(
         <div class="w-screen h-auto my-5"> 
-            <div class="flex flex-row w-full h-fit items-center justify-center flex-wrap">
-                <p class="text-3xl font-extrabold text-iccc-red px-5">{props.title}</p>
+            <div class="flex flex-row w-full h-fit items-center justify-start    flex-wrap">
+                <p class="text-xl font-semi text-iccc-red px-5">{props.title}</p>
                 <ButtonBorder title={text} clickHandler={setSize}/>
             </div>           
             {large ? lgPDF : smPDF} 
