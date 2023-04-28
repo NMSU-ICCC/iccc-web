@@ -42,7 +42,7 @@ export default function LogIn(){
                         Log In
                     </h1>
                     <p class=" text-xl font-semibold">
-                        to see your files and manage your account
+                        To see your files and manage your account
                     </p>
                     
                     <img class="w-screen p-5" src="./undraw_fingerprint_login_re_t71l.svg" alt="Our current meetings"/>

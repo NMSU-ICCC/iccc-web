@@ -5,9 +5,9 @@ import { useNavigate  } from "react-router-dom";
 export default function AdminResource(props){
     function removeResource(){
         deleteResource(props.title)
+        navigate("/MyFiles");
     }
     useEffect(() => {
-        navigate("/MyFiles");
     }, [removeResource])
     
     const navigate = useNavigate();
