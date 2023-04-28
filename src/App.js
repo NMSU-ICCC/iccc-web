@@ -1,7 +1,7 @@
 import './App.css';
 import React, {useEffect} from 'react';
 import Home from './Components/Home/Home';
-import Resources from './Components/Resources/Resources';
+import PublicResources from './Components/PublicResources/PublicResources';
 import AboutUs from './Components/AboutUs/AboutUs';
 import LogIn from './Components/Session/LogIn';
 import SignIn from './Components/Session/SignIn';
@@ -24,7 +24,7 @@ function App() {
           <Routes>
             <Route path="/" element={ <Home/>} />
             <Route path="/AboutUs" element={ <AboutUs/>} />
-            <Route path="/Resources" element={ <Resources/>} />
+            <Route path="/PublicResources" element={ <PublicResources/>} />
             <Route path="/SignIn" element={ <SignIn/>} />
             <Route path="/LogIn" element={ <LogIn/>} />
             <Route path="/MyFiles" element={ <MyFiles/>} />

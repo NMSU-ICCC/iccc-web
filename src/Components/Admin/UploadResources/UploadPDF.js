@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import {uploadResourceFile} from "../../firebase";
-import ButtonSolid from '../ButtonSolid';
+import {uploadResourceFile} from "../../../firebase";
+import ButtonSolid from '../../ButtonSolid';
+import { useNavigate  } from "react-router-dom";
 
 
 export default function UploadPDF(){
@@ -27,7 +28,7 @@ export default function UploadPDF(){
             uploadResourceFile(titlePDF, PDF, "pdf")
             .then(answer => {
                 setSuccessMessage("");
-                window.location.reload();
+                navigate("/MyFiles");
             })
         }
         else{
@@ -35,6 +36,7 @@ export default function UploadPDF(){
             return;
         }
     } 
+    const navigate = useNavigate();
 
 
     return(

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import {uploadResourceLink} from "../../firebase";
-import ButtonSolid from '../ButtonSolid';
+import {uploadResourceLink} from "../../../firebase";
+import ButtonSolid from '../../ButtonSolid';
+import { useNavigate  } from "react-router-dom";
 
 
 export default function UploadLink(props){
@@ -25,9 +26,10 @@ export default function UploadLink(props){
         setSuccessMessage("link loaded successfully!");
         setTimeout(function() {
             setSuccessMessage("");
-            window.location.reload();
+            navigate("/MyFiles");
           }, 500);
     } 
+    const navigate = useNavigate();
     return(
         <div class="flex flex-col items-center justify-center border-2 border-iccc-red rounded-lg w-full h-full p-5 my-4">
             <p class="text-3xl font-bold m-1 ">

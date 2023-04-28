@@ -1,6 +1,6 @@
 import AdminResource from "./AdminResource";
 import { useEffect, useState } from "react";
-import {getAllResources, getResourcesLinks} from "../../firebase";
+import {getAllResources, getResourcesLinks} from "../../../firebase";
 
 export default function AdminResources(){
     const [resourcesList, setResourcesList] = useState([]);
@@ -19,6 +19,7 @@ export default function AdminResources(){
     }, [])
     const resources = []
     for (let index = 0; index < resourcesList.length; index++) {
+        console.log(resourcesList[index])
         resources.push( <AdminResource key={index} title={resourcesList[index]["name"]} type={resourcesList[index]["type"]} url={resourcesList[index]["url"]}/>  )
     }
     return(

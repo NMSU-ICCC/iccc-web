@@ -1,7 +1,7 @@
 import React, {} from 'react';
-import UploadFile from './UploadFile';
+import UploadFile from './UploadResources/UploadFile'
 import AdminIntro from './AdminIntro';
-import AdminResources from './AdminResources';
+import AdminResources from './ManageSources/AdminResources';
 
 export default function Admin(){
     return(

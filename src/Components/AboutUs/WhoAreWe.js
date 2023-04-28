@@ -10,8 +10,7 @@ export class WhoAreWe extends Component{
                     <div class="block rounded-lg shadow-lg bg-white">
                         <div class="flex flex-wrap items-center">
                             <div class="hidden lg:flex grow-0 shrink-0 basis-auto lg:w-6/12 xl:w-4/12">
-                                <img src="./NMSU_3.jpg" alt="image3"
-                                    class="h-full pl-8 lg:rounded-tr-none lg:rounded-bl-lg" />
+                                <img class="h-full pl-8 lg:rounded-tr-none lg:rounded-bl-lg" src="./undraw_interview_re_e5jn.svg" alt="become-an-officer"/>     
                             </div>
                         <div class="grow-0 shrink-0 basis-auto w-full lg:w-6/12 xl:w-8/12">
                         <div class="px-6 py-12 md:px-12">

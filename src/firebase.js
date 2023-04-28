@@ -2,7 +2,7 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import { doc, setDoc} from "firebase/firestore";
 //import {ref, uploadBytes} from "firebase/storage";
-import { getStorage, ref, uploadBytes, listAll, getDownloadURL, getMetadata } from "firebase/storage";
+import { getStorage, ref, uploadBytes, listAll, getDownloadURL, getMetadata, deleteObject  } from "firebase/storage";
 import bcrypt from 'bcryptjs'
 
 
@@ -221,6 +221,28 @@ export const getAllResources = () =>{
     })
 }
 
+
+
+export const deleteResource = (filename) =>{
+    return new Promise((resolve, reject) => {         
+        resourceExists(filename)
+        .then(answer =>{
+            if (answer){
+                return resolve(false);
+            }
+            const storage = getStorage();
+            const desertRef = ref(storage, filename);
+
+
+            deleteObject(desertRef).then(() => {
+                console.log("deleted!!")
+                return resolve(true)
+            }).catch((error) => {
+                console.log("not able to delete", error)
+            });
+        })
+    })
+}
 
 
 export default firebase;
