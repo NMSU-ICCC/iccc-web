@@ -31,7 +31,7 @@ export default function Files(){
     }
     for (let index = 0; index < resourcesLinksList.length; index++) {
         console.log(resourcesLinksList[index])
-        links.push(<Link key={"link"+index} title={resourcesLinksList[index]["title"]} url={resourcesLinksList[index]["link"]}/>);
+        links.push(<Link key={"link"+index} title={resourcesLinksList[index]["name"]} url={resourcesLinksList[index]["link"]}/>);
     }
 
 
