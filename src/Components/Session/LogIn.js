@@ -81,14 +81,19 @@ export default function LogIn(){
                 </button>
 
                 {/* register */}
-                <div class="flex  flex-col justify-start items-start w-full h-fit my-10">
+                <div class="flex  flex-col justify-start items-start w-full h-fit mt-10 mb-2">
                     <p class="font-semibold">
                         Don't have an account yet?
                     </p>
                     <Link to="/signIn" class=" bg-transparent outline-none border-0 text-nmsu-crimson font-bold ">
                         Register
                     </Link>
-                    Or
+                </div>
+                {/* reset password */}
+                <div class="flex  flex-col justify-start items-start w-full h-fit mb-10">
+                    <p class="font-semibold">
+                        Forgot your password?
+                    </p>
                     <Link to="/RequestRestorePassword" class=" bg-transparent outline-none border-0 text-nmsu-crimson font-bold ">
                         Reset your password
                     </Link>
