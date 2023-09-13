@@ -10,6 +10,8 @@ import LogOut from './Components/Session/LogOut';
 import Admin from './Components/Admin/Admin';
 import { Routes, Route, useLocation  } from "react-router-dom";
 import Menu from './Components/Menu/Menu'
+import RequestRestorePassword from './Components/Session/RequestRestorePassword';
+import RestorePassword from './Components/Session/RestorePassword';
 
 function App() {  
   const location = useLocation();
@@ -30,6 +32,8 @@ function App() {
             <Route path="/MyFiles" element={ <MyFiles/>} />
             <Route path="/LogOut" element={ <LogOut/>} />
             <Route path="/Admin" element={ <Admin/>} />
+            <Route path="/RequestRestorePassword" element={ <RequestRestorePassword/>} />
+            <Route path="/RestorePassword" element={ <RestorePassword/>} />
           </Routes>
       </div>
 

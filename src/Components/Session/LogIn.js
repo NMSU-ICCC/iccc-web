@@ -88,6 +88,10 @@ export default function LogIn(){
                     <Link to="/signIn" class=" bg-transparent outline-none border-0 text-nmsu-crimson font-bold ">
                         Register
                     </Link>
+                    Or
+                    <Link to="/RequestRestorePassword" class=" bg-transparent outline-none border-0 text-nmsu-crimson font-bold ">
+                        Reset your password
+                    </Link>
                 </div>
 
             </div>

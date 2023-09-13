@@ -80,6 +80,26 @@ export const userExists = (userName, email) => {
         })
     })
 }
+
+export const getUser = (email) => {
+    return new Promise((resolve, reject) => {  
+        getUsers()
+        .then(users =>{
+            //THERE CAN'T BE MORE THAN 20 USERS. THIS TO AVOID ATTACKS
+            if(users.length >= 20){
+                return resolve(true);
+            }
+            for (let index = 0; index < users.length; index++) {
+                if(users[index].email.localeCompare(email) == 0){
+                    return resolve( users[index] );
+                }
+            }
+            return resolve( false );
+        })
+    })
+}
+
+ 
 export const resourceExists = (filename) => {
     return new Promise((resolve, reject) => {  
         getResources()
@@ -114,10 +134,29 @@ function definePosition(code){
     }
 }
 
+function createPasswordRecoveryCode(){
+    /*
+        This 5 characters long code is used to reset the password as a confirmation method.
+        Everytime the password is updated, the code is reseted.
+    */
+    let CODE_LENGTH = 5
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < CODE_LENGTH) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    return result;
+}
+
 export const addUser = (name, email, userName, password, code) =>{ 
     let position = definePosition(code);
     let hashedPassword = ""
     hashPassword(password).then(ans => {hashedPassword = ans});
+    let recoveryCode = createPasswordRecoveryCode();
+
 
     return new Promise((resolve, reject) => { 
         userExists(userName, email)
@@ -130,10 +169,58 @@ export const addUser = (name, email, userName, password, code) =>{
                 email: email,
                 userName: userName,
                 password: hashedPassword,
-                position: position
+                position: position,
+                passwordRecoveryCode: recoveryCode
             });
             return resolve(true);
         })
+    })
+}
+
+
+export const updateUser = (email, newPassword, code) =>{ 
+    
+
+    // let position = definePosition(code);
+    // let hashedPassword = ""
+    // hashPassword(password).then(ans => {hashedPassword = ans});
+    // let recoveryCode = createPasswordRecoveryCode();
+    // console.log(recoveryCode)
+
+
+    return new Promise((resolve, reject) => { 
+        getUser(email)
+        .then((user) => {
+            //valid user means correct email
+            if(!user){
+                return resolve(false);
+            }
+            
+            //check that the code is valid
+            if(user["passwordRecoveryCode"].localeCompare(code) != 0){
+                return resolve(false);
+            }
+            
+            //if the code is valid
+            user["passwordRecoveryCode"] = createPasswordRecoveryCode();
+            //set new password and recovery code
+            let hashedPassword = ""
+            hashPassword(newPassword).then(ans => {
+                hashedPassword = ans;                
+                let recoveryCode = createPasswordRecoveryCode();
+
+                setDoc(doc(db, "users", user["userName"]), {
+                    name: user["name"],
+                    email: user["email"],
+                    userName: user["userName"],
+                    password: hashedPassword,
+                    position: user["position"],
+                    passwordRecoveryCode: recoveryCode
+                });
+                return resolve(true);   
+            });         
+        })
+
     })
 }
 
