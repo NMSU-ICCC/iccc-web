@@ -10,6 +10,9 @@ export class Welcome extends Component{
                 <p >
                   To the International Collaborative Coding Club at NMSU.
                 </p>
+                <p >
+                  Be part of projects, mock interviews, events and more.
+                </p>
             </div>
         </div>   
       );

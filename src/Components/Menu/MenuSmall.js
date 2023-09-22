@@ -1,13 +1,18 @@
 import React, {Component, useState} from 'react';
-import { Link } from "react-router-dom";
+import { Link  } from "react-router-dom";
 import logotype from '../../Resources/Images/logotype/ICCC_logo_solid.png'; 
 import menuIcon from '../../Resources/Images/Icons/menu_white.png'; 
 import {WideButton} from "../WideButton"
 
 function MenuSmall(props){
       const buttons = [] 
+
+      function hideMenu(){
+        setshowMenu(false)
+      }
+
       for (let i = 0; i< props.options.length; i++){
-          buttons.push(<WideButton message={props.options[i][0]} route={props.options[i][1]} key={i}/>)
+          buttons.push(<WideButton message={props.options[i][0]} route={props.options[i][1]} hideMenu = {hideMenu} key={i}/>)
       }
 
       const [showMenu, setshowMenu] =  useState(false)
@@ -22,7 +27,7 @@ function MenuSmall(props){
                 X
               </p>
           </button>
-          <Link to="/"class="h-fit w-full bg-nmsu-crimson flex justify-center items-center border-b-white border-b-4 py-4">
+          <Link to="/"class="h-fit w-full bg-nmsu-crimson flex justify-center items-center border-b-white border-b-4 py-4" onClick={() => setshowMenu(false)}>
               <img src={logotype} className="h-14" alt="ICCC_logo" />
               <p class="text-lg text-white font-bold pl-6 ">Home</p>
           </Link>
