@@ -1,4 +1,5 @@
 import ProjectField from "./ProjectField"
+import ProjectTechnologies from "./ProjectTechnologies"
 import YoutubeEmbed from "./YoutubeEmbed"
 
 export default function Project(props){
@@ -11,8 +12,9 @@ export default function Project(props){
                 {props.Title}
             </h1>
             {/* Description */}
-            <div className="w-full flex justify-start p-5 flex  items-stretch flex-col overflow-auto max-h-80">
+            <div className="w-full flex justify-start p-5  items-stretch flex-col overflow-auto max-h-full">
                 <ProjectField fieldName="Creators" fieldValue={props.Creators}/>
+                <ProjectTechnologies technologies = {props.Technologies}/>
                 <ProjectField fieldName="Description" fieldValue={props.Description}/>
                 <ProjectField fieldName="ProjectLink" fieldValue={props.ProjectLink}/>
                 <YoutubeEmbed embedId={props.YoutubeLink}/>
