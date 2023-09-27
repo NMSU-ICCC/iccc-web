@@ -12,6 +12,7 @@ import { Routes, Route, useLocation  } from "react-router-dom";
 import Menu from './Components/Menu/Menu'
 import RequestRestorePassword from './Components/Session/RequestRestorePassword';
 import RestorePassword from './Components/Session/RestorePassword';
+import Projects from './Components/Projects/Projects';
 
 function App() {  
   const location = useLocation();
@@ -34,6 +35,7 @@ function App() {
             <Route path="/Admin" element={ <Admin/>} />
             <Route path="/RequestRestorePassword" element={ <RequestRestorePassword/>} />
             <Route path="/RestorePassword" element={ <RestorePassword/>} />
+            <Route path="/Projects" element={ <Projects/>} />
           </Routes>
       </div>
 
