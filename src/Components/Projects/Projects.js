@@ -11,7 +11,7 @@ export default function Projects(){
             "YoutubeLink": "0pYBJzUATOU"
         },
         "Trang's To Do " : {
-            "Title": "Trang's To Do",
+            "Title": "Trang's To Do SPA",
             "Creators": "Trang Tran",
             "Technologies": ["ReactJs", "Typescript", "CSS", "Firebase"],
             "Description": "This to do app allows you to keep track of daily tasks. It will let you create, mark as done and delete a task. It is designed to mimic the websites of the early 2000's.",
