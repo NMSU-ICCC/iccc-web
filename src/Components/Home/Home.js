@@ -9,7 +9,7 @@ import { WhoAreWe } from '../AboutUs/WhoAreWe';
 export default function Home(){
   return (   
     <>
-        <div class="h-full relative">
+        <div class="h-screen w-screen overflow-hidden">
           <Welcome/> 
         </div>
         <Meetings/>
