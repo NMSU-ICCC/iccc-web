@@ -18,6 +18,14 @@ export default function Projects(){
             "ProjectLink": "https://todoapp-4398b.web.app/",
             "YoutubeLink": "dt2n-C6Yob8"
         },
+        "Xindi's To Do " : {
+            "Title": "Xindi's To Do SPA",
+            "Creators": "Xindi Zheng",
+            "Technologies": ["ReactJs", "Typescript", "CSS", "Firebase"],
+            "Description": "This to do app allows you to keep track of daily tasks. It will let you create, mark as done and delete a task. It is designed to mimic the websites of the early 2000's.",
+            "ProjectLink": "https://todoapp-4398b.web.app/",
+            "YoutubeLink": "koiEyMqV7LA"
+        },
     }
 
     // const [projects]
